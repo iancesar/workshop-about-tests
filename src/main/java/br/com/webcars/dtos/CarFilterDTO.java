@@ -8,10 +8,8 @@ import br.com.webcars.entities.Car;
 import br.com.webcars.utils.Utils;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 @Builder
 public class CarFilterDTO
 {

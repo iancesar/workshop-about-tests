@@ -4,9 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import br.com.webcars.exceptions.BusinessException;
 import br.com.webcars.utils.Utils;
 
 class UtilsTest
@@ -37,6 +39,17 @@ class UtilsTest
 		number = Utils.formatToString(BigDecimal.valueOf(10.25));
 
 		assertThat(number).isEqualTo("10,25");
+	}
+
+	@Test
+	@DisplayName("Formatação de número inválido")
+	void wrongNumberFormat()
+	{
+
+		Assertions.assertThrows(BusinessException.class, () -> {
+			Utils.formatFromString("A");
+		});
+
 	}
 
 }
