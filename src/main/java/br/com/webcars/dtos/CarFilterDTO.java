@@ -3,7 +3,6 @@ package br.com.webcars.dtos;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import br.com.webcars.entities.Car;
 import br.com.webcars.utils.Utils;
@@ -35,61 +34,15 @@ public class CarFilterDTO
 	public static CarFilterDTO from(Map<String, String> map)
 	{
 
-		var year = new Supplier<Short>()
-		{
+		CarFilterDTOBuilder builder = CarFilterDTO.builder();
 
-			@Override
-			public Short get()
-			{
-				if(Optional.ofNullable(map.get("year")).isPresent())
-				{
-					return Short.valueOf(map.get("year"));
-				}
-				else
-				{
-					return null;
-				}
-			}
-		};
+		Optional.ofNullable(map.get("year")).ifPresent(year -> builder.year(Short.valueOf(year)));
+		Optional.ofNullable(map.get("id")).ifPresent(id -> builder.id(Long.valueOf(id)));
+		Optional.ofNullable(map.get("price")).ifPresent(price -> builder.price(BigDecimal.valueOf(Utils.formatFromString(price))));
 
-		var id = new Supplier<Long>()
-		{
-			@Override
-			public Long get()
-			{
-				if(Optional.ofNullable(map.get("id")).isPresent())
-				{
-					return Long.valueOf(map.get("id"));
-				}
-				else
-				{
-					return null;
-				}
-			}
-		};
-
-		var price = new Supplier<BigDecimal>()
-		{
-			@Override
-			public BigDecimal get()
-			{
-				if(Optional.ofNullable(map.get("price")).isPresent())
-				{
-					return BigDecimal.valueOf(Utils.formatFromString(map.get("price")));
-				}
-				else
-				{
-					return null;
-				}
-			}
-		};
-
-		var filter = CarFilterDTO.builder()//
+		var filter = builder//
 			.brand(map.get("brand"))//
 			.model(map.get("model"))//
-			.year(year.get())//
-			.price(price.get())//
-			.id(id.get())//
 			.build();
 
 		return filter;

@@ -46,6 +46,8 @@ public class CarControllerIT extends BaseIT
 
 		List<CarResponseDTO> cars = Arrays.asList(mapper.readValue(response.getContentAsString(), CarResponseDTO[].class));
 
+		assertThat(cars).hasSize(1);
+
 		assertThat(cars.get(0)).isEqualToComparingFieldByField(filter);
 
 	}
