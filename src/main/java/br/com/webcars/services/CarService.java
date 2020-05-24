@@ -19,7 +19,6 @@ public class CarService
 
 	public List<CarResponseDTO> list(CarFilterDTO filter)
 	{
-
 		var example = Example.of(filter.to());
 
 		var cars = repository.findAll(example);

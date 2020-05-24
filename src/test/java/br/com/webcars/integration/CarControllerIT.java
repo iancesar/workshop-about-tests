@@ -48,7 +48,7 @@ public class CarControllerIT extends BaseIT
 
 		assertThat(cars).hasSize(1);
 
-		assertThat(cars.get(0)).isEqualToComparingFieldByField(filter);
+		assertThat(cars.get(0)).hasNoNullFieldsOrProperties();
 
 	}
 

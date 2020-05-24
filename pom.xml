@@ -21,7 +21,7 @@
 		<sonar.projectKey>iancesar_workshop-about-tests</sonar.projectKey>
 		<sonar.organization>iancesar</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.login>0bba8d2b14c2c145638f6cd5e4373202f4c6b975</sonar.login>
+		<sonar.login>eaf0a222d664c53c4325b989dc356edbd7022812</sonar.login>
 		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco-merged-test-coverage-report/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
 	</properties>
