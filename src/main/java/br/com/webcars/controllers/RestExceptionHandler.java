@@ -1,4 +1,4 @@
-package br.com.webcars.utils;
+package br.com.webcars.controllers;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
