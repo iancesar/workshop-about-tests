@@ -18,7 +18,7 @@ public class UtilsTest
 	{
 		String currency = Utils.formatToCurrency(BigDecimal.TEN);
 
-		assertThat(currency).isEqualTo("R$ 10,00");
+		assertThat(currency).isEqualTo("R$ 10,00");
 	}
 
 	@Test
