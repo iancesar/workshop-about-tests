@@ -5,6 +5,8 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 
+import br.com.webcars.exceptions.BusinessException;
+
 public class Utils
 {
 
@@ -36,8 +38,7 @@ public class Utils
 		}
 		catch(ParseException e)
 		{
-			e.printStackTrace();
-			return null;
+			throw new BusinessException("Erro ao realizar a conversão");
 		}
 	}
 
