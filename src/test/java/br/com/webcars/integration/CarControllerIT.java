@@ -19,7 +19,7 @@ import br.com.webcars.dtos.CarFilterDTO;
 import br.com.webcars.dtos.CarResponseDTO;
 import br.com.webcars.utils.Utils;
 
-public class CarControllerIT extends BaseIT
+class CarControllerIT extends BaseIT
 {
 
 	@Test

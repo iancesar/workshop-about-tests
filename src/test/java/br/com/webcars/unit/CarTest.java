@@ -17,7 +17,7 @@ import br.com.webcars.dtos.CarResponseDTO;
 import br.com.webcars.entities.Car;
 import br.com.webcars.utils.Utils;
 
-public class CarTest
+class CarTest
 {
 
 	@Test

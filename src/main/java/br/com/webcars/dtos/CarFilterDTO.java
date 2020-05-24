@@ -40,12 +40,11 @@ public class CarFilterDTO
 		Optional.ofNullable(map.get("id")).ifPresent(id -> builder.id(Long.valueOf(id)));
 		Optional.ofNullable(map.get("price")).ifPresent(price -> builder.price(BigDecimal.valueOf(Utils.formatFromString(price))));
 
-		var filter = builder//
+		return builder//
 			.brand(map.get("brand"))//
 			.model(map.get("model"))//
 			.build();
 
-		return filter;
 	}
 
 }

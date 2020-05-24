@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import br.com.webcars.utils.Utils;
 
-public class UtilsTest
+class UtilsTest
 {
 
 	@Test

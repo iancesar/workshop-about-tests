@@ -10,12 +10,4 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class RestExceptionHandler extends ResponseEntityExceptionHandler
 {
 
-	//	@ExceptionHandler(entu.class)
-	//	public ResponseEntity<ErrorDTO> handleBusinessException(final BusinessException e)
-	//	{
-	//		final ErrorDTO error = new ErrorDTO.Builder().withThrowable(e).build();
-	//
-	//		return ResponseEntity.status(406).body(error);
-	//	}
-
 }
