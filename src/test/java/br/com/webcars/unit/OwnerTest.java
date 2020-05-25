@@ -18,7 +18,7 @@ class OwnerTest
 	@DisplayName("Converter Owner para OwnerResponseDTO")
 	void toResponse() throws Exception
 	{
-		Owner owner = new Owner(1L, "Ian", "ian@teste.com.br", "(31) 98638-3745", null);
+		Owner owner = new Owner(1L, "Ian", "ian@teste.com.br", "(31) 98638-3745");
 
 		final Car car = new Car(1L, "Fiat", "Uno", (short) 2009, BigDecimal.valueOf(12000), owner);
 
@@ -27,6 +27,5 @@ class OwnerTest
 		assertThat(responseDTO).usingRecursiveComparison().isEqualTo(car);
 
 	}
-
 
 }
