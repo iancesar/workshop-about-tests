@@ -30,3 +30,40 @@ build/
 ### VS Code ###
 .vscode/
 .attach_pid13069
+
+### Front ###
+src/main/front/.DS_Store
+/src/main/front/.thumbs.db
+/src/main/front/node_modules
+
+# Quasar core related directories
+/src/main/front/.quasar
+/src/main/front/dist
+
+# Cordova related directories and files
+/src/main/front/src-cordova/node_modules
+/src/main/front/src-cordova/platforms
+/src/main/front/src-cordova/plugins
+/src/main/front/src-cordova/www
+
+# Capacitor related directories and files
+/src/main/front/src-capacitor/www
+/src/main/front/src-capacitor/node_modules
+
+# BEX related directories and files
+/src/main/front/src-bex/www
+/src/main/front/src-bex/js/core
+
+# Log files
+/src/main/front/npm-debug.log*
+/src/main/front/yarn-debug.log*
+/src/main/front/yarn-error.log*
+
+/src/main/front/yarn.lock
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
