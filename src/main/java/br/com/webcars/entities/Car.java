@@ -3,11 +3,14 @@ package br.com.webcars.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -44,6 +47,10 @@ public class Car implements Serializable
 	@Column(scale = 2, precision = 19)
 	@NotNull
 	private BigDecimal			price;
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@NotNull
+	private Owner					owner;
 
 	public Car(CarFilterDTO dto)
 	{

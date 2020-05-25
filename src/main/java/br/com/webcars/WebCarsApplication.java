@@ -19,6 +19,6 @@ public class WebCarsApplication
 	@Bean
 	public ModelMapper modelMapper()
 	{
-		return new ModelMapperFactory().factory();
+		return new ModelMapperFactory().getMapper();
 	}
 }

@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import br.com.webcars.dtos.CarDetailDTO;
 import br.com.webcars.dtos.CarFilterDTO;
 import br.com.webcars.dtos.CarResponseDTO;
 import br.com.webcars.utils.Utils;
@@ -23,7 +24,7 @@ class CarControllerIT extends BaseIT
 {
 
 	@Test
-	@DisplayName("Listar carros")
+	@DisplayName("Listar carros anunciados")
 	void list() throws Exception
 	{
 
@@ -49,6 +50,25 @@ class CarControllerIT extends BaseIT
 		assertThat(cars).hasSize(1);
 
 		assertThat(cars.get(0)).hasNoNullFieldsOrProperties();
+
+	}
+
+	@Test
+	@DisplayName("Detalhes do carro anunciado")
+	void carDetail() throws Exception
+	{
+		RequestBuilder requestBuilder = get("/cars/{car}", 1L);
+
+		MockHttpServletResponse response = mvc.perform(requestBuilder)//
+			.andExpect(status().isOk())//
+			.andReturn()//
+			.getResponse();
+
+		CarDetailDTO dto = mapper.readValue(response.getContentAsString(), CarDetailDTO.class);
+
+		assertThat(dto).isNotNull();
+
+		assertThat(dto.getOthersCars()).isNotEmpty();
 
 	}
 

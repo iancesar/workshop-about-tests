@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
 
 import br.com.webcars.entities.Car;
+import br.com.webcars.factories.ModelMapperFactory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,11 +29,15 @@ public class CarResponseDTO implements Serializable
 
 	private BigDecimal			price;
 
+	private OwnerResponseDTO	owner;
+
 	public static CarResponseDTO from(Car car)
 	{
 		CarResponseDTO dto = new CarResponseDTO();
 
-		BeanUtils.copyProperties(car, dto);
+		ModelMapper m = new ModelMapperFactory().getMapper();
+		dto = m.map(car, CarResponseDTO.class);
+
 		return dto;
 	}
 

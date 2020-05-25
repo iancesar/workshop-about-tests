@@ -15,6 +15,7 @@ import org.springframework.util.MultiValueMap;
 import br.com.webcars.dtos.CarFilterDTO;
 import br.com.webcars.dtos.CarResponseDTO;
 import br.com.webcars.entities.Car;
+import br.com.webcars.entities.Owner;
 import br.com.webcars.utils.Utils;
 
 class CarTest
@@ -24,11 +25,14 @@ class CarTest
 	@DisplayName("Converter Car para CarResponseDTO")
 	void toResponse() throws Exception
 	{
-		final Car car = new Car(1L, "Fiat", "Uno", (short) 2009, BigDecimal.valueOf(12000));
+
+		Owner owner = new Owner(1L, "Ian", "ian@teste.com.br", "(31) 98638-3745", null);
+
+		final Car car = new Car(1L, "Fiat", "Uno", (short) 2009, BigDecimal.valueOf(12000), owner);
 
 		CarResponseDTO responseDTO = CarResponseDTO.from(car);
 
-		assertThat(responseDTO).isEqualToComparingFieldByField(car);
+		assertThat(responseDTO).usingRecursiveComparison().isEqualTo(car);
 
 	}
 
@@ -36,9 +40,11 @@ class CarTest
 	@DisplayName("Converter Lista de Car para Lista de CarResponseDTO")
 	void toResponseList() throws Exception
 	{
+		Owner owner = new Owner(1L, "Ian", "ian@teste.com.br", "(31) 98638-3745", null);
+
 		final List<Car> cars = Stream.of(//
-			new Car(1L, "Fiat", "Uno", (short) 2009, BigDecimal.valueOf(12000)), //
-			new Car(2L, "Fiat", "Palio", (short) 2011, BigDecimal.valueOf(26000)))//
+			new Car(1L, "Fiat", "Uno", (short) 2009, BigDecimal.valueOf(12000), owner), //
+			new Car(2L, "Fiat", "Palio", (short) 2011, BigDecimal.valueOf(26000), owner))//
 			.collect(Collectors.toList());
 
 		List<CarResponseDTO> responseListDTO = CarResponseDTO.from(cars);
@@ -47,7 +53,7 @@ class CarTest
 
 		responseListDTO.forEach(dto -> {
 			Car currentCar = cars.stream().filter(car -> car.getId().equals(dto.getId())).findAny().get();
-			assertThat(dto).isEqualToComparingFieldByField(currentCar);
+			assertThat(dto).usingRecursiveComparison().isEqualTo(currentCar);
 		});
 
 	}
@@ -65,7 +71,7 @@ class CarTest
 
 		Car car = dto.to();
 
-		assertThat(car).isEqualToComparingFieldByField(dto);
+		assertThat(dto).isEqualToComparingFieldByField(car);
 	}
 
 	@Test

@@ -1,5 +1,6 @@
 package br.com.webcars.dtos;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
@@ -11,18 +12,20 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class CarFilterDTO
+public class CarFilterDTO implements Serializable
 {
 
-	private Long			id;
+	private static final long	serialVersionUID	= 1L;
 
-	private String			brand;
+	private Long					id;
 
-	private String			model;
+	private String					brand;
 
-	private Short			year;
+	private String					model;
 
-	private BigDecimal	price;
+	private Short					year;
+
+	private BigDecimal			price;
 
 	public Car to()
 	{
