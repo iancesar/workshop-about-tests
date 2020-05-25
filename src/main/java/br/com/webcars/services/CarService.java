@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,16 @@ public class CarService
 {
 
 	@Autowired
-	private CarRepository repository;
+	private CarRepository	repository;
+
+	@Autowired
+	private ModelMapper		mapper;
 
 	public List<CarResponseDTO> list(CarFilterDTO filter)
 	{
-		var example = Example.of(filter.to());
+		var car = mapper.map(filter, Car.class);
+
+		var example = Example.of(car);
 		var cars = repository.findAllJoinOwner(example);
 
 		return CarResponseDTO.from(cars);

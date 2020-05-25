@@ -16,6 +16,7 @@ import br.com.webcars.dtos.CarFilterDTO;
 import br.com.webcars.dtos.CarResponseDTO;
 import br.com.webcars.entities.Car;
 import br.com.webcars.entities.Owner;
+import br.com.webcars.factories.ModelMapperFactory;
 import br.com.webcars.utils.Utils;
 
 class CarTest
@@ -69,7 +70,7 @@ class CarTest
 			.year((short) 2009)//
 			.build();
 
-		Car car = dto.to();
+		Car car = new ModelMapperFactory().getMapper().map(dto, Car.class);
 
 		assertThat(dto).isEqualToComparingFieldByField(car);
 	}

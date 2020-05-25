@@ -14,13 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import br.com.webcars.dtos.CarFilterDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Car implements Serializable
@@ -51,14 +54,5 @@ public class Car implements Serializable
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@NotNull
 	private Owner					owner;
-
-	public Car(CarFilterDTO dto)
-	{
-		id = dto.getId();
-		brand = dto.getBrand();
-		model = dto.getModel();
-		year = dto.getYear();
-		price = dto.getPrice();
-	}
 
 }

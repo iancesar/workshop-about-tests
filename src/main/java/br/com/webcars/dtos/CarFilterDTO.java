@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
 
-import br.com.webcars.entities.Car;
 import br.com.webcars.utils.Utils;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,11 +25,6 @@ public class CarFilterDTO implements Serializable
 	private Short					year;
 
 	private BigDecimal			price;
-
-	public Car to()
-	{
-		return new Car(this);
-	}
 
 	public static CarFilterDTO from(Map<String, String> map)
 	{
